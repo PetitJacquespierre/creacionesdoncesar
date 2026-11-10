@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    CREACIONES DON CÉSAR C.A. — ESTILOS MAESTROS (SAVILE ROW & QUIET LUXURY)
    Arquitectura visual de élite para sastrería y alquiler de etiqueta ($5,000+ USD)
    Grow Studio Agency
@@ -1090,13 +1090,35 @@ button {
   text-decoration: underline;
 }
 
-/* 15. RESPONSIVE BREAKPOINTS (ESTÁNDAR MÓVIL NATURAL & FLUIDO GROW STUDIO) */
+/* ==========================================================================
+   15. RESPONSIVE BREAKPOINTS (ESTÁNDAR MÓVIL Y TABLET GROW STUDIO)
+   ========================================================================== */
+
+/* TABLETS Y MÓVILES (<= 992px) */
 @media (max-width: 992px) {
-  /* En móviles y tablets, el scroll funciona de manera 100% natural sin bloquear la pantalla */
+  /* Ocultar menú de escritorio y botón de cita en header móvil para que el logo no se monte */
+  .nav-desktop {
+    display: none !important;
+  }
+  .header-cta-group {
+    display: none !important;
+  }
+  .site-header {
+    padding: 0.75rem 0;
+  }
+  .site-header__inner {
+    justify-content: center;
+  }
+  .brand-mark {
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* El Hero fluye verticalmente de forma limpia */
   .hero-scroll-section {
     min-height: auto;
     background: radial-gradient(circle at 50% 20%, rgba(99, 20, 27, 0.22) 0%, transparent 70%), var(--bg-dark);
-    padding: 1rem 0 2.5rem 0;
+    padding: 1.5rem 0 3rem 0;
   }
   .hero-sticky-frame {
     position: relative;
@@ -1108,7 +1130,7 @@ button {
   .hero-grid {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.75rem;
     width: 100%;
   }
   .hero-editorial {
@@ -1121,17 +1143,17 @@ button {
     margin-bottom: 0.85rem;
   }
   .hero-headline {
-    font-size: clamp(1.75rem, 6vw, 2.3rem);
+    font-size: clamp(1.75rem, 5.5vw, 2.3rem);
     text-align: center;
     min-height: auto;
     margin-bottom: 0.85rem;
-    line-height: 1.18;
+    line-height: 1.2;
   }
   .hero-lead {
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     text-align: center;
     min-height: auto;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
     line-height: 1.6;
     max-width: 100%;
   }
@@ -1139,27 +1161,27 @@ button {
     justify-content: center;
     width: 100%;
     gap: 0.75rem;
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
   }
   .hero-cta-wrap .btn-studio {
     width: 100%;
-    max-width: 320px;
+    max-width: 340px;
   }
   .hero-stage-indicators {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
+    gap: 0.6rem;
     width: 100%;
-    max-width: 380px;
+    max-width: 400px;
     margin-inline: auto;
-    padding-top: 1rem;
+    padding-top: 1.2rem;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
   .stage-pill {
     width: 100%;
     text-align: center;
-    padding: 0.55rem 0.6rem;
-    font-size: 0.76rem;
+    padding: 0.6rem 0.5rem;
+    font-size: 0.78rem;
   }
   .hero-canvas-wrap {
     width: 100%;
@@ -1167,7 +1189,7 @@ button {
   }
   .hero-suit-stage {
     width: 100%;
-    max-width: 380px;
+    max-width: 400px;
     height: 420px;
     margin: 0 auto;
     border-radius: 20px;
@@ -1188,8 +1210,30 @@ button {
   .telemetry-badge {
     font-size: 0.7rem;
   }
+
+  /* Catálogo: En tablet/móvil se apilan verticalmente con margen de 16px */
+  .catalog-section {
+    padding: 3.5rem 0;
+  }
+  .bento-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    width: 100%;
+  }
+  .bento-card {
+    width: 100%;
+  }
   .bento-card--7, .bento-card--5 {
     grid-column: span 12;
+  }
+  .bento-card__img-wrap {
+    height: 240px;
+  }
+
+  /* Proceso de alquiler */
+  .process-section {
+    padding: 3.5rem 0;
   }
   .split-layout {
     grid-template-columns: 1fr;
@@ -1198,50 +1242,65 @@ button {
   .split-left {
     position: relative;
     top: 0;
+    text-align: center;
   }
+  .split-left .section-desc {
+    text-align: center !important;
+  }
+  .split-left .btn-studio {
+    margin-inline: auto;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 }
 
+/* SMARTPHONES (<= 640px) */
 @media (max-width: 640px) {
   .container {
-    width: min(100% - 1.5rem, 100%);
-    padding-inline: 0.25rem;
+    width: min(100% - 2rem, 100%);
+    padding-inline: 0.5rem;
   }
   .protocol-bar {
     display: none;
   }
   .site-header {
-    padding: 0.65rem 0;
+    padding: 0.75rem 0;
   }
   .brand-mark {
     gap: 0.75rem;
   }
   .brand-mark__img {
-    width: 44px;
-    height: 44px;
+    width: 46px;
+    height: 46px;
   }
   .brand-mark__name {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
+    line-height: 1.15;
   }
   .brand-mark__tagline {
     font-size: 0.65rem;
   }
   .btn-studio {
-    padding: 0.7rem 1.1rem;
+    padding: 0.75rem 1.1rem;
     font-size: 0.82rem;
   }
   .hero-headline {
-    font-size: 1.65rem;
+    font-size: 1.6rem;
+    line-height: 1.22;
   }
   .hero-suit-stage {
     height: 380px;
+    max-width: 100%;
+  }
+  .trust-strip {
+    padding: 1.25rem 0;
   }
   .trust-strip__grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 1.25rem 0.75rem;
   }
   .trust-item:nth-child(2) {
     border-right: none;
@@ -1251,6 +1310,9 @@ button {
   }
   .trust-item__label {
     font-size: 0.68rem;
+  }
+  .advisor-section {
+    padding: 3.5rem 0;
   }
   .advisor-card {
     padding: 1.5rem 1.15rem;
