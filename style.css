@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    CREACIONES DON CÉSAR C.A. — ESTILOS MAESTROS (SAVILE ROW & QUIET LUXURY)
    Arquitectura visual de élite para sastrería y alquiler de etiqueta ($5,000+ USD)
    Grow Studio Agency
@@ -119,15 +119,18 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
+  text-align: center;
+  padding: 1.5rem;
+  max-width: 90vw;
+  gap: 1rem;
 }
 
 .splash-executive__logo {
-  width: 140px;
-  height: 140px;
+  width: clamp(75px, 20vw, 110px);
+  height: clamp(75px, 20vw, 110px);
   object-fit: contain;
   background: transparent;
-  filter: drop-shadow(0 0 35px var(--burgundy-glow));
+  filter: drop-shadow(0 0 25px var(--burgundy-glow));
   animation: pulseLogo 1.6s ease-in-out infinite alternate;
 }
 
@@ -139,18 +142,20 @@ button {
 .splash-executive__title {
   font-family: 'Montserrat', sans-serif;
   font-weight: 800;
-  font-size: 1.35rem;
-  letter-spacing: 0.25em;
+  font-size: clamp(1rem, 4.5vw, 1.25rem);
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-primary);
+  line-height: 1.2;
 }
 
 .splash-executive__code {
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.85rem;
-  letter-spacing: 0.15em;
+  font-size: clamp(0.68rem, 3vw, 0.78rem);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--silver);
+  color: #D4A1A7;
+  font-weight: 600;
 }
 
 /* 5. BARRA SUPERIOR PROTOCOLAR */
