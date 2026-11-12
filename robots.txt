@@ -1,0 +1,21 @@
+# Robots.txt — Creaciones Don César C.A. (Punto Fijo, Falcón)
+# Grow Studio SEO & GEO Architecture
+
+User-agent: *
+Allow: /
+
+# Motores de Inteligencia Artificial (GEO / AEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Declaración de Mapa del Sitio XML
+Sitemap: https://creacionesdoncesar.vercel.app/sitemap.xml
