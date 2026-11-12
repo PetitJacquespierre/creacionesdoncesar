@@ -338,4 +338,155 @@ Hola Don César, acabo de generar mi cita en la web para coordinar mi prueba y r
     });
   }
 
+  // 7. ACORDEÓN INTERACTIVO DE PREGUNTAS FRECUENTES (FAQ)
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const questionBtn = item.querySelector('.faq-question');
+    if (!questionBtn) return;
+
+    questionBtn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('is-open');
+      
+      // Opcional: Cerrar los demás para mantener orden
+      faqItems.forEach(other => {
+        if (other !== item) {
+          other.classList.remove('is-open');
+          const otherBtn = other.querySelector('.faq-question');
+          if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      if (isOpen) {
+        item.classList.remove('is-open');
+        questionBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        item.classList.add('is-open');
+        questionBtn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // 8. TRÍADA DE EASTER EGGS GROW STUDIO
+  // A. Mensaje estilizado en consola (F12)
+  console.log(
+    '%c🎩 CREACIONES DON CÉSAR C.A. %c— Sastrería & Petronio Punto Fijo\n' +
+    '%c⚡ Protocolo KDOG_K ejecutado: Arquitectura visual calibrada por Grow Studio (https://growstudioweb.vercel.app/)',
+    'background: #63141b; color: #ffffff; font-weight: bold; padding: 6px 10px; border-radius: 4px 0 0 4px; font-size: 12px;',
+    'background: #111116; color: #c8c8cf; padding: 6px 10px; border-radius: 0 4px 4px 0; font-size: 12px;',
+    'color: #8e8e98; font-size: 11px; margin-top: 6px; display: block;'
+  );
+
+  // B. 5 Toques en el Logo -> Confeti Canvas + Modal VIP de Honor
+  let logoClickCount = 0;
+  let logoResetTimer = null;
+  const brandMarks = document.querySelectorAll('.brand-mark');
+  const vipModal = document.getElementById('vipEasterModal');
+  const closeVipBtn = document.getElementById('closeVipEaster');
+
+  brandMarks.forEach(logo => {
+    logo.addEventListener('click', (e) => {
+      logoClickCount++;
+      clearTimeout(logoResetTimer);
+      logoResetTimer = setTimeout(() => { logoClickCount = 0; }, 2500);
+
+      if (logoClickCount === 5) {
+        e.preventDefault();
+        logoClickCount = 0;
+        triggerCelebrationConfetti();
+        if (vipModal) vipModal.classList.add('is-open');
+      }
+    });
+
+    // C. Long-press en el logo (Vibración háptica si está disponible)
+    let pressTimer = null;
+    const startPress = () => {
+      pressTimer = setTimeout(() => {
+        if ('vibrate' in navigator) navigator.vibrate([50, 40, 50]);
+        logo.style.transform = 'scale(0.95)';
+        setTimeout(() => { logo.style.transform = ''; }, 300);
+      }, 700);
+    };
+    const cancelPress = () => { clearTimeout(pressTimer); };
+
+    logo.addEventListener('mousedown', startPress);
+    logo.addEventListener('mouseup', cancelPress);
+    logo.addEventListener('mouseleave', cancelPress);
+    logo.addEventListener('touchstart', startPress, { passive: true });
+    logo.addEventListener('touchend', cancelPress, { passive: true });
+  });
+
+  if (closeVipBtn && vipModal) {
+    closeVipBtn.addEventListener('click', () => {
+      vipModal.classList.remove('is-open');
+    });
+    vipModal.addEventListener('click', (e) => {
+      if (e.target === vipModal) vipModal.classList.remove('is-open');
+    });
+  }
+
+  // Motor Liviano de Confeti Canvas Nativo (Borgoña, Oro, Plata)
+  function triggerCelebrationConfetti() {
+    const confettiCanvas = document.getElementById('confettiCanvas');
+    if (!confettiCanvas) return;
+    const ctx = confettiCanvas.getContext('2d');
+    const width = confettiCanvas.width = window.innerWidth;
+    const height = confettiCanvas.height = window.innerHeight;
+
+    const colors = ['#63141b', '#9b2029', '#d4af37', '#f3e5ab', '#ffffff', '#e0e0e0'];
+    const particles = [];
+    const count = 90;
+
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: width / 2,
+        y: height / 2,
+        r: Math.random() * 6 + 3,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        vx: (Math.random() - 0.5) * 14,
+        vy: (Math.random() - 0.7) * 16,
+        gravity: 0.35,
+        rotation: Math.random() * 360,
+        rotationSpeed: (Math.random() - 0.5) * 10,
+        opacity: 1
+      });
+    }
+
+    let animationId;
+    let frames = 0;
+
+    function render() {
+      frames++;
+      ctx.clearRect(0, 0, width, height);
+
+      let alive = false;
+      particles.forEach(p => {
+        p.vy += p.gravity;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rotation += p.rotationSpeed;
+        p.opacity = Math.max(0, 1 - (frames / 120));
+
+        if (p.opacity > 0 && p.y < height + 20) {
+          alive = true;
+          ctx.save();
+          ctx.globalAlpha = p.opacity;
+          ctx.translate(p.x, p.y);
+          ctx.rotate((p.rotation * Math.PI) / 180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.r / 2, -p.r / 2, p.r, p.r * 1.6);
+          ctx.restore();
+        }
+      });
+
+      if (alive && frames < 140) {
+        animationId = requestAnimationFrame(render);
+      } else {
+        cancelAnimationFrame(animationId);
+        ctx.clearRect(0, 0, width, height);
+      }
+    }
+
+    render();
+  }
+
 })();
