@@ -328,9 +328,15 @@
 👔 *Modelo:* ${traje}
 📏 *Talla estimada:* ${talla}
 📅 *Fecha del evento:* ${fecha}
-📍 *Sede:* Calle Zamora c/ Callejón Aragón, Punto Fijo
 ━━━━━━━━━━━━━━━━━━━━
-Hola Don César, acabo de generar mi cita en la web para coordinar mi prueba y reserva.`;
+💰 *Condiciones de Alquiler:*
+• Abono inicial de reserva: $20 USD (al apartar)
+• Saldo restante: al retirar la prenda
+• Depósito de garantía reembolsable: $10 USD (reintegrable el lunes)
+• Tintorería y ajuste de sastre: 100% Incluidos
+📍 *Sede:* Calle Zamora c/ Callejón Aragón, Centro Punto Fijo
+━━━━━━━━━━━━━━━━━━━━
+Hola Don César, acabo de generar mi cita en la web para coordinar mi prueba y congelar mi fecha.`;
 
       const targetUrl = `https://wa.me/584146954001?text=${encodeURIComponent(ticketMsg)}`;
       window.open(targetUrl, '_blank', 'noopener');
