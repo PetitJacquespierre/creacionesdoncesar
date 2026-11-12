@@ -495,4 +495,69 @@ Hola Don César, acabo de generar mi cita en la web para coordinar mi prueba y c
     render();
   }
 
+  // 9. CONCIERGE / ASISTENTE FLOTANTE IN-APP (SIN SALIR DE LA PÁGINA)
+  const conciergeLauncher = document.getElementById('conciergeLauncher');
+  const conciergeWidget = document.getElementById('conciergeWidget');
+  const closeConciergeBtn = document.getElementById('closeConcierge');
+
+  if (conciergeLauncher && conciergeWidget) {
+    const toggleConcierge = () => {
+      const isOpen = conciergeWidget.classList.contains('is-open');
+      if (isOpen) {
+        conciergeWidget.classList.remove('is-open');
+        conciergeLauncher.classList.remove('is-active');
+        conciergeLauncher.setAttribute('aria-expanded', 'false');
+      } else {
+        conciergeWidget.classList.add('is-open');
+        conciergeLauncher.classList.add('is-active');
+        conciergeLauncher.setAttribute('aria-expanded', 'true');
+      }
+    };
+
+    conciergeLauncher.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleConcierge();
+    });
+
+    if (closeConciergeBtn) {
+      closeConciergeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        conciergeWidget.classList.remove('is-open');
+        conciergeLauncher.classList.remove('is-active');
+        conciergeLauncher.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    // Cerrar al hacer clic fuera
+    document.addEventListener('click', (e) => {
+      if (!conciergeWidget.contains(e.target) && !conciergeLauncher.contains(e.target)) {
+        conciergeWidget.classList.remove('is-open');
+        conciergeLauncher.classList.remove('is-active');
+        conciergeLauncher.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Acciones internas del concierge
+    const conciergeActionBtns = conciergeWidget.querySelectorAll('[data-concierge-action]');
+    conciergeActionBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const action = btn.dataset.conciergeAction;
+        conciergeWidget.classList.remove('is-open');
+        conciergeLauncher.classList.remove('is-active');
+        conciergeLauncher.setAttribute('aria-expanded', 'false');
+
+        if (action === 'ticket') {
+          const bookingModal = document.getElementById('bookingModal');
+          if (bookingModal) bookingModal.classList.add('is-open');
+        } else if (action === 'advisor') {
+          const advisorSection = document.getElementById('asesor');
+          if (advisorSection) advisorSection.scrollIntoView({ behavior: 'smooth' });
+        } else if (action === 'location') {
+          const locationSection = document.getElementById('ubicacion');
+          if (locationSection) locationSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  }
+
 })();
