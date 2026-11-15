@@ -289,6 +289,19 @@
     </div>
   </div>
 
+  <!-- BARRA DE CAPACIDAD ARTESANAL & AGENDA ACTIVA -->
+  <div class="calendar-urgency-bar">
+    <div class="container calendar-urgency-bar__inner">
+      <div class="urgency-left">
+        <span class="live-indicator"><span class="live-dot"></span> AGENDA ACTIVA</span>
+        <span class="urgency-text">Calibración artesanal limitada: <strong>Máximo 12 trajes por fin de semana</strong> para asegurar ajuste anatómico y vaporizado impecable.</span>
+      </div>
+      <div class="urgency-right">
+        <span class="urgency-badge">Abono Inicial $20 USD • Garantía Reembolsable $10 USD</span>
+      </div>
+    </div>
+  </div>
+
   <!-- 5. ASESOR INTERACTIVO EN 3 TOQUES CON VERIFICADOR DE DISPONIBILIDAD -->
   <section class="advisor-section" id="asesor">
     <div class="container">
@@ -365,7 +378,11 @@
         </p>
       </div>
 
-      <div class="bento-grid">
+      <div class="bento-grid has-arch-crosses">
+        <span class="arch-cross arch-cross--tl" aria-hidden="true">+</span>
+        <span class="arch-cross arch-cross--tr" aria-hidden="true">+</span>
+        <span class="arch-cross arch-cross--bl" aria-hidden="true">+</span>
+        <span class="arch-cross arch-cross--br" aria-hidden="true">+</span>
         
         <!-- Tarjeta 1 (7 columnas): Bodas y Smoking -->
         <article class="bento-card bento-card--7">
@@ -459,7 +476,7 @@
       <div class="split-left">
         <span class="section-tag">PROCESO SIN FRICCIÓN</span>
         <h2 class="section-title">Tu traje listo en 4 sencillos pasos</h2>
-        <p class="section-desc" style="text-align: left; margin-bottom: 2rem;">
+        <p class="section-desc" style="margin-bottom: 2rem;">
           Diseñado para que solo te preocupes por disfrutar tu día especial. Nosotros nos encargamos del entalle, el planchado y la tintorería.
         </p>
         <button type="button" class="btn-studio btn-studio--burgundy" data-open-modal data-suit="Alquiler Paso a Paso">
@@ -526,7 +543,11 @@
         </p>
       </div>
 
-      <div class="comparison-grid">
+      <div class="comparison-grid has-arch-crosses">
+        <span class="arch-cross arch-cross--tl" aria-hidden="true">+</span>
+        <span class="arch-cross arch-cross--tr" aria-hidden="true">+</span>
+        <span class="arch-cross arch-cross--bl" aria-hidden="true">+</span>
+        <span class="arch-cross arch-cross--br" aria-hidden="true">+</span>
         <!-- Tarjeta Problema: Tiendas Comunes -->
         <div class="comparison-card comparison-card--bad">
           <span class="comparison-card__tag">El Riesgo Convencional</span>
@@ -597,7 +618,11 @@
         </p>
       </div>
 
-      <div class="testimonials-grid">
+      <div class="testimonials-grid has-arch-crosses">
+        <span class="arch-cross arch-cross--tl" aria-hidden="true">+</span>
+        <span class="arch-cross arch-cross--tr" aria-hidden="true">+</span>
+        <span class="arch-cross arch-cross--bl" aria-hidden="true">+</span>
+        <span class="arch-cross arch-cross--br" aria-hidden="true">+</span>
         <article class="testimonial-card">
           <header class="testimonial-card__header">
             <div class="testimonial-avatar">MF</div>
@@ -746,7 +771,7 @@
       <div class="ticket-header">
         <span class="section-tag">TICKET DE RESERVA DE ALQUILER</span>
         <h3>Creaciones Don César</h3>
-        <p class="bento-card__desc" style="text-align: center;">
+        <p class="bento-card__desc">
           Completa tus datos para apartar tu fecha de prueba y conectar directamente con el sastre por WhatsApp.
         </p>
 
@@ -765,6 +790,37 @@
             <strong style="color: #4ade80;">100% Incluidos</strong>
           </div>
         </div>
+
+        <!-- Guía Rápida de Toma de Medidas In-Modal -->
+        <details class="measurement-guide-drawer">
+          <summary class="measurement-guide-trigger">
+            <span>📐 ¿Cómo tomamos tus medidas en tienda? (Guía de 3 min)</span>
+            <span class="guide-toggle-icon">+</span>
+          </summary>
+          <div class="measurement-guide-content">
+            <div class="guide-grid">
+              <div class="guide-item">
+                <strong>1. Hombros</strong>
+                <span>Ancho exacto de costura a costura sin holguras caídas.</span>
+              </div>
+              <div class="guide-item">
+                <strong>2. Mangas</strong>
+                <span>Largo calibrado dejando asomar 1 cm de puño de camisa.</span>
+              </div>
+              <div class="guide-item">
+                <strong>3. Cintura</strong>
+                <span>Talle anatómico con caída recta sin arrugas ni tensión.</span>
+              </div>
+              <div class="guide-item">
+                <strong>4. Botamanga</strong>
+                <span>Quiebre sutil sobre el zapato formal sin arrastrar.</span>
+              </div>
+            </div>
+            <p class="guide-note">
+              * La toma de medidas se realiza en nuestro local en Calle Zamora al apartar tu fecha con el abono de $20 USD. 100% gratuita e incluida.
+            </p>
+          </div>
+        </details>
       </div>
 
       <form class="ticket-form" id="bookingForm">
@@ -923,8 +979,9 @@
       <p style="font-size: 0.9rem; color: #a0a0a8; margin-bottom: 1rem; text-align: justify; text-justify: inter-word;">
         Has descubierto el acceso especial de Creaciones Don César. Presenta este cupón digital al agendar tu cita y recibe una <strong>corbata de seda o corbatín de cortesía</strong> incluido con tu alquiler completo.
       </p>
-      <div class="vip-code-box">
-        <span class="vip-code">CESAR-HONOR-2026</span>
+      <div class="vip-code-box" id="vipCodeBox" title="Clic para copiar código de honor">
+        <span class="vip-code" id="vipCodeText">CESAR-HONOR-2026</span>
+        <span class="vip-copy-hint" id="vipCopyHint">📋 Toca aquí para copiar tu código</span>
       </div>
       <button type="button" class="btn-studio btn-studio--burgundy" id="closeVipEaster" style="width: 100%;">
         Aceptar y Volver

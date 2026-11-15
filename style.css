@@ -691,10 +691,16 @@ button {
   margin-bottom: 1rem;
 }
 
-.section-desc {
+.section-desc,
+.section-subtitle {
   color: var(--text-muted);
   font-size: 0.95rem;
-  text-align: center;
+  line-height: 1.65;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  max-width: 680px;
+  margin-inline: auto;
 }
 
 .advisor-card {
@@ -1252,7 +1258,9 @@ button {
     text-align: center;
   }
   .split-left .section-desc {
-    text-align: center !important;
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    hyphens: auto !important;
   }
   .split-left .btn-studio {
     margin-inline: auto;
@@ -1387,12 +1395,14 @@ button {
   overflow: hidden;
 }
 
-.comparison-card--problem {
+.comparison-card--problem,
+.comparison-card--bad {
   border: 1px solid rgba(239, 68, 68, 0.2);
   border-top: 2px solid rgba(239, 68, 68, 0.6);
 }
 
-.comparison-card--solution {
+.comparison-card--solution,
+.comparison-card--good {
   border: var(--border-specular);
   border-top: 3px solid var(--burgundy-bright);
   box-shadow: var(--shadow-elevation), var(--shadow-glow);
@@ -1404,28 +1414,35 @@ button {
   gap: 0.85rem;
 }
 
-.comparison-badge {
+.comparison-badge,
+.comparison-card__tag {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.72rem;
   font-weight: 700;
-  padding: 0.3rem 0.65rem;
+  padding: 0.35rem 0.75rem;
   border-radius: 6px;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  width: fit-content;
 }
 
-.comparison-badge--danger {
+.comparison-badge--danger,
+.comparison-card--bad .comparison-card__tag {
   background: rgba(239, 68, 68, 0.15);
   color: #F87171;
   border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
-.comparison-badge--success {
+.comparison-badge--success,
+.comparison-card--good .comparison-card__tag {
   background: rgba(16, 185, 129, 0.15);
   color: #34D399;
   border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
-.comparison-title {
+.comparison-title,
+.comparison-card__title {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.25rem;
   font-weight: 800;
@@ -1439,13 +1456,16 @@ button {
   gap: 1.15rem;
 }
 
-.comparison-item {
+.comparison-item,
+.comparison-list__item {
   display: flex;
   align-items: flex-start;
   gap: 0.85rem;
   font-size: 0.9rem;
   line-height: 1.55;
   color: var(--text-muted);
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .comparison-icon {
@@ -1494,23 +1514,32 @@ button {
   letter-spacing: 0.15em;
 }
 
-.testimonial-text {
+.testimonial-text,
+.testimonial-quote {
   font-size: 0.92rem;
   color: var(--text-muted);
   line-height: 1.65;
   font-style: italic;
   flex-grow: 1;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+.testimonial-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
 }
 
 .testimonial-author {
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.author-avatar {
+.author-avatar,
+.testimonial-avatar {
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -1524,20 +1553,26 @@ button {
   color: #FFFFFF;
 }
 
-.author-meta {
+.author-meta,
+.testimonial-author {
   display: flex;
   flex-direction: column;
 }
 
-.author-name {
+.author-name,
+.testimonial-author__name {
   font-family: 'Montserrat', sans-serif;
   font-size: 0.88rem;
   font-weight: 700;
   color: var(--text-primary);
 }
 
-.author-event {
+.author-event,
+.testimonial-author__role {
   font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--silver);
+}
   font-size: 0.72rem;
   color: #D4A1A7;
 }
@@ -1590,21 +1625,24 @@ button {
   color: #FFA4AD;
 }
 
-.faq-chevron {
-  width: 22px;
-  height: 22px;
+.faq-chevron,
+.faq-icon {
+  width: 24px;
+  height: 24px;
   display: grid;
   place-items: center;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.06);
   color: var(--silver);
-  font-size: 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
   transition: transform 0.35s var(--ease-expo), background-color 0.3s ease;
   flex-shrink: 0;
 }
 
-.faq-item.is-open .faq-chevron {
-  transform: rotate(180deg);
+.faq-item.is-open .faq-chevron,
+.faq-item.is-open .faq-icon {
+  transform: rotate(45deg);
   background: var(--burgundy);
   color: #FFFFFF;
 }
@@ -1619,8 +1657,14 @@ button {
   line-height: 1.65;
 }
 
+.faq-answer p {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
 .faq-item.is-open .faq-answer {
-  max-height: 300px;
+  max-height: 600px;
   padding: 0 1.5rem 1.35rem 1.5rem;
 }
 
@@ -1881,7 +1925,8 @@ button {
   visibility: visible;
 }
 
-.vip-card {
+.vip-card,
+.vip-easter-card {
   background: linear-gradient(135deg, #181922 0%, #0D0E13 100%);
   border: 2px solid #F59E0B;
   border-radius: 22px;
@@ -1892,7 +1937,8 @@ button {
   position: relative;
 }
 
-.vip-card__badge {
+.vip-card__badge,
+.vip-badge {
   display: inline-block;
   background: rgba(245, 158, 11, 0.15);
   color: #FBBF24;
@@ -2006,4 +2052,212 @@ button {
   .condition-row strong {
     font-size: 0.8rem;
   }
+}
+
+/* 18. CRUCES ARQUITECTÓNICAS DE PRECISIÓN (+) — ESTÁNDAR GROW STUDIO */
+.has-arch-crosses {
+  position: relative;
+}
+
+.arch-cross {
+  position: absolute;
+  font-family: 'JetBrains Mono', 'Geist Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.22);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.arch-cross--tl { top: -6px; left: -6px; }
+.arch-cross--tr { top: -6px; right: -6px; }
+.arch-cross--bl { bottom: -6px; left: -6px; }
+.arch-cross--br { bottom: -6px; right: -6px; }
+
+/* 19. BARRA DE CAPACIDAD ARTESANAL & URGENCIA ELEGANTE */
+.calendar-urgency-bar {
+  background: rgba(99, 20, 27, 0.22);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.75rem 0;
+  font-size: 0.84rem;
+}
+
+.calendar-urgency-bar__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.urgency-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-primary);
+  flex-wrap: wrap;
+}
+
+.live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  color: #4ADE80;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', 'Geist Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22C55E;
+  box-shadow: 0 0 6px #22C55E;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+.urgency-text {
+  font-size: 0.84rem;
+  color: #D1D1D6;
+}
+
+.urgency-badge {
+  font-family: 'JetBrains Mono', 'Geist Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--silver-light);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .calendar-urgency-bar__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+/* 20. GUÍA INTERACTIVA DE TOMA DE MEDIDAS (DRAWER DE PRECISIÓN) */
+.measurement-guide-drawer {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  margin-top: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.measurement-guide-drawer[open] {
+  border-color: rgba(99, 20, 27, 0.5);
+  background: rgba(99, 20, 27, 0.08);
+}
+
+.measurement-guide-trigger {
+  padding: 0.75rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--silver-light);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  list-style: none;
+}
+
+.measurement-guide-trigger::-webkit-details-marker {
+  display: none;
+}
+
+.guide-toggle-icon {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  color: var(--silver);
+  transition: transform 0.3s ease;
+}
+
+.measurement-guide-drawer[open] .guide-toggle-icon {
+  transform: rotate(45deg);
+  color: var(--burgundy-bright);
+}
+
+.measurement-guide-content {
+  padding: 0.75rem 1rem 1rem 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.guide-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  margin-bottom: 0.75rem;
+}
+
+.guide-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 0.5rem 0.65rem;
+  border-radius: 6px;
+  border-left: 2px solid var(--burgundy-bright);
+}
+
+.guide-item strong {
+  font-size: 0.78rem;
+  color: var(--text-primary);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.guide-item span {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.guide-note {
+  font-size: 0.74rem;
+  color: var(--silver);
+  font-style: italic;
+  margin: 0;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+@media (max-width: 480px) {
+  .guide-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 21. BOTÓN COPIAR CUPÓN VIP EN UN CLIC */
+.vip-code-box {
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.vip-code-box:hover {
+  transform: scale(1.02);
+  border-color: #FBBF24;
+}
+
+.vip-copy-hint {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--silver);
+  margin-top: 0.35rem;
+  font-family: 'Inter', sans-serif;
 }

@@ -311,14 +311,25 @@
     });
   }
 
+  // Sanitización de seguridad (Grow Studio Security Engine)
+  function sanitizeInput(str) {
+    return String(str || '').replace(/[<>"'`;()]/g, '').trim();
+  }
+
+  let isVipUnlocked = false;
+
   if (bookingForm) {
     bookingForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const nombre = document.getElementById('clientName').value.trim();
-      const telefono = document.getElementById('clientPhone').value.trim();
-      const traje = document.getElementById('modalSuitInput').value;
-      const fecha = document.getElementById('eventDate').value;
-      const talla = document.getElementById('clientSize').value;
+      const nombre = sanitizeInput(document.getElementById('clientName').value);
+      const telefono = sanitizeInput(document.getElementById('clientPhone').value);
+      const traje = sanitizeInput(document.getElementById('modalSuitInput').value);
+      const fecha = sanitizeInput(document.getElementById('eventDate').value);
+      const talla = sanitizeInput(document.getElementById('clientSize').value);
+
+      const vipBonusLine = isVipUnlocked 
+        ? `\n🎁 *Cortesía VIP Activada:* Cupón CESAR-HONOR-2026 (Corbata o corbatín de seda de regalo)` 
+        : '';
 
       const ticketMsg = 
 `🎫 *TICKET DE RESERVA DE ALQUILER — CREACIONES DON CÉSAR*
@@ -327,7 +338,7 @@
 📞 *Teléfono:* ${telefono}
 👔 *Modelo:* ${traje}
 📏 *Talla estimada:* ${talla}
-📅 *Fecha del evento:* ${fecha}
+📅 *Fecha del evento:* ${fecha}${vipBonusLine}
 ━━━━━━━━━━━━━━━━━━━━
 💰 *Condiciones de Alquiler:*
 • Abono inicial de reserva: $20 USD (al apartar)
@@ -398,6 +409,7 @@ Hola Don César, acabo de generar mi cita en la web para coordinar mi prueba y c
       if (logoClickCount === 5) {
         e.preventDefault();
         logoClickCount = 0;
+        isVipUnlocked = true;
         triggerCelebrationConfetti();
         if (vipModal) vipModal.classList.add('is-open');
       }
@@ -420,6 +432,23 @@ Hola Don César, acabo de generar mi cita en la web para coordinar mi prueba y c
     logo.addEventListener('touchstart', startPress, { passive: true });
     logo.addEventListener('touchend', cancelPress, { passive: true });
   });
+
+  // Copiar código VIP en un clic
+  const vipCodeBox = document.getElementById('vipCodeBox');
+  const vipCopyHint = document.getElementById('vipCopyHint');
+  if (vipCodeBox) {
+    vipCodeBox.addEventListener('click', () => {
+      const codeText = document.getElementById('vipCodeText')?.textContent || 'CESAR-HONOR-2026';
+      navigator.clipboard.writeText(codeText).then(() => {
+        if (vipCopyHint) {
+          vipCopyHint.textContent = '✅ ¡Copiado al portapapeles! Menciónalo en tu reserva';
+          vipCopyHint.style.color = '#4ade80';
+        }
+      }).catch(() => {
+        if (vipCopyHint) vipCopyHint.textContent = 'Código: CESAR-HONOR-2026';
+      });
+    });
+  }
 
   if (closeVipBtn && vipModal) {
     closeVipBtn.addEventListener('click', () => {
