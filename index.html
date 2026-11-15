@@ -194,6 +194,15 @@
         </button>
       </div>
     </div>
+
+    <!-- Navegación Rápida Móvil (Solo <= 992px, deslizamiento suave en 1 toque) -->
+    <nav class="mobile-quick-nav" aria-label="Accesos rápidos móvil">
+      <a href="#asesor" class="mobile-pill">✨ Asesor</a>
+      <a href="#coleccion" class="mobile-pill">👔 Colección</a>
+      <a href="#como-funciona" class="mobile-pill">📋 Pasos ($20)</a>
+      <a href="#faq" class="mobile-pill">❓ Dudas</a>
+      <a href="#ubicacion" class="mobile-pill">📍 Tienda</a>
+    </nav>
   </header>
 
   <!-- 3. HERO SHOWSTOPPER 3D SCROLL (TIPOGRAFÍA LIMPIA Y UNIFICADA) -->
@@ -352,15 +361,21 @@
         <!-- Resultado Recomendado con Estado de Disponibilidad -->
         <div class="advisor-result">
           <div class="result-meta">
-            <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.25rem;">
+            <div style="display:flex; align-items:center; flex-wrap:wrap; gap:0.6rem; margin-bottom:0.35rem;">
               <span class="result-badge">RECOMENDACIÓN DE SASTRERÍA:</span>
               <span class="telemetry-badge" id="advisorStatusBadge">DISPONIBLE EN TIENDA</span>
             </div>
             <span class="result-name" id="advisorResultName">Smoking Clásico Black Tie con Solapa de Seda</span>
+            <span class="result-price" id="advisorPriceBadge">Alquiler Completo: $35 - $45 USD • Aparta con $20 inicial (+$10 garantía)</span>
           </div>
-          <a href="https://wa.me/584146954001?text=Hola%20Don%20Cesar,%20me%20interesa%20consultar%20disponibilidad%20para%20el%20Smoking%20Black%20Tie" id="advisorWhatsappBtn" target="_blank" rel="noopener" class="btn-studio btn-studio--burgundy">
-            <span>Consultar Disponibilidad por WhatsApp ↗</span>
-          </a>
+          <div class="advisor-result-actions">
+            <button type="button" class="btn-studio btn-studio--burgundy" id="advisorModalBtn" data-open-modal data-suit="Smoking Clásico Black Tie con Solapa de Seda">
+              <span>📅 Apartar este Traje Aquí ($20)</span>
+            </button>
+            <a href="https://wa.me/584146954001?text=Hola%20Don%20Cesar,%20me%20interesa%20consultar%20disponibilidad%20para%20el%20Smoking%20Black%20Tie" id="advisorWhatsappBtn" target="_blank" rel="noopener noreferrer" class="advisor-wa-link">
+              <span>o consultar por WhatsApp ↗</span>
+            </a>
+          </div>
         </div>
 
       </div>

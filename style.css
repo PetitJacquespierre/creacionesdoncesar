@@ -1046,7 +1046,7 @@ button {
 .site-footer {
   background: #050507;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 4rem 0 2rem 0;
+  padding: 4rem 0 5.5rem 0;
   font-size: 0.85rem;
   color: var(--text-muted);
 }
@@ -2260,4 +2260,84 @@ button {
   color: var(--silver);
   margin-top: 0.35rem;
   font-family: 'Inter', sans-serif;
+}
+
+/* 22. NAVEGACIÓN RÁPIDA MÓVIL EN PÍLDORAS (1 TOQUE SIN MENÚ HAMBURGUESA) */
+.mobile-quick-nav {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .mobile-quick-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding: 0.65rem 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(8, 8, 10, 0.92);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .mobile-quick-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .mobile-pill {
+    flex-shrink: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: var(--silver-light);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+  .mobile-pill:active,
+  .mobile-pill:hover {
+    background: rgba(99, 20, 27, 0.4);
+    border-color: var(--burgundy-bright);
+    color: #FFFFFF;
+  }
+}
+
+/* 23. MEJORAS VISUALES DEL ASESOR DE ETIQUETA (PRECIO + RESERVA IN-APP) */
+.result-price {
+  display: block;
+  font-family: 'JetBrains Mono', 'Geist Mono', monospace;
+  font-size: 0.78rem;
+  color: #4ade80;
+  margin-top: 0.35rem;
+}
+
+.advisor-result-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.advisor-wa-link {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.advisor-wa-link:hover {
+  color: var(--silver-light);
+}
+
+@media (max-width: 768px) {
+  .advisor-result-actions {
+    width: 100%;
+    align-items: center;
+  }
+  .advisor-result-actions .btn-studio {
+    width: 100%;
+  }
 }

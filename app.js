@@ -253,29 +253,40 @@
     });
   });
 
+  const advisorPriceBadge = document.getElementById('advisorPriceBadge');
+  const advisorModalBtn = document.getElementById('advisorModalBtn');
+
   function updateAdvisorRecommendation() {
     let suitRecommendation = 'Smoking Clásico Black Tie con Solapa de Seda';
     let statusText = 'DISPONIBLE EN TIENDA';
+    let priceText = 'Alquiler Completo: $35 - $45 USD • Aparta con $20 inicial (+$10 garantía)';
     
-    if (selectedConfig.evento === 'Graduación') {
+    if (selectedConfig.persona === 'Niño (Paje / Cortejo)') {
+      suitRecommendation = 'Cortejo Infantil Completo con Chaleco y Corbata';
+      statusText = 'DISPONIBLE • TALLAS 2 A LA 16';
+      priceText = 'Alquiler Infantil: $20 - $25 USD • Aparta con $20 inicial (+$10 garantía)';
+    } else if (selectedConfig.persona === 'Talla Especial / Plus Size') {
+      suitRecommendation = `Traje Anatómico Talla Especial 46-58+ (${selectedConfig.evento})`;
+      statusText = 'DISPONIBLE • ATENCIÓN PERSONALIZADA';
+      priceText = 'Alquiler Plus Size: $30 - $40 USD • Aparta con $20 inicial (+$10 garantía)';
+    } else if (selectedConfig.evento === 'Graduación') {
       suitRecommendation = 'Traje Slim Fit Azul Marino / Gris Oxford';
       statusText = 'DISPONIBLE • AJUSTE EN 48 HORAS';
+      priceText = 'Alquiler Graduación: $25 - $30 USD • Aparta con $20 inicial (+$10 garantía)';
     } else if (selectedConfig.evento === '15 Años') {
       suitRecommendation = 'Esmoquin de Gala con Corbatín Borgoña Imperial';
       statusText = 'DISPONIBLE EN TIENDA';
-    } else if (selectedConfig.persona === 'Niño (Paje / Cortejo)') {
-      suitRecommendation = 'Cortejo Infantil Completo con Chaleco y Corbata';
-      statusText = 'DISPONIBLE • TALLAS 2 A LA 16';
-    } else if (selectedConfig.persona === 'Talla Especial / Plus Size') {
-      suitRecommendation = 'Traje de Corte Anatómico Especial (Tallas 46 a la 58+)';
-      statusText = 'DISPONIBLE • ATENCIÓN PERSONALIZADA';
+      priceText = 'Alquiler Gala 15 Años: $30 - $40 USD • Aparta con $20 inicial (+$10 garantía)';
     } else if (selectedConfig.horario === 'Día / Jardín o Playa') {
       suitRecommendation = 'Traje Claro Fresco o Azul Cobalto de Alta Costura';
       statusText = 'DISPONIBLE EN TIENDA';
+      priceText = 'Alquiler Día / Playa: $25 - $35 USD • Aparta con $20 inicial (+$10 garantía)';
     }
 
     if (resultName) resultName.textContent = suitRecommendation;
     if (advisorStatusBadge) advisorStatusBadge.textContent = statusText;
+    if (advisorPriceBadge) advisorPriceBadge.textContent = priceText;
+    if (advisorModalBtn) advisorModalBtn.dataset.suit = suitRecommendation;
 
     if (advisorWhatsappBtn) {
       const text = `¡Hola Sastrería Don César! Vengo de su página web. Usé el asistente de etiqueta para un evento: *${selectedConfig.evento}* de *${selectedConfig.horario}* para *${selectedConfig.persona}*. Me interesa consultar disponibilidad y agendar prueba para el modelo: *${suitRecommendation}*. ¿Tienen fecha disponible?`;
